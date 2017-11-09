@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>AWS Accounts and Roles </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="console.lukado.eu helps you store bookmarks to AWS Account and Roles">
+    <meta name="author" content="Lukasz Dorosz">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/manifest.json">
+    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css" />
+    <link href="assets/styles/gradients.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="https://console.aws.amazon.com/console/home" target="_blank" data-toggle="tooltip" data-placement="bottom"
+                                title="" data-original-title="Tries to get any current / active logged in session">AWS
+                        Management Console</a></li>
+                        <li><a href="https://aws.amazon.com/new/" target="_blank" data-toggle="tooltip" data-placement="bottom"
+                                title="" data-original-title="Lastest AWS news">AWS News</a></li>
+                        <li><a href="https://lukado.eu" target="_blank" data-toggle="tooltip" data-placement="bottom"
+                                title="" data-original-title="My personal blog">Blog</a></li>
+                    </ul>
+                    <a class="navbar-brand" href="https://twitter.com/mrdoro" style="float:right;" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+                    <a class="navbar-brand" href="https://github.com/mrdoro/myawsbookmarks" style="float:right;" target="_blank"><i class="fa fa-github fa-lg"></i></a>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    <br><br>
+
+                    <div class="form-group">
+                      <h4>Console</h4>
+                        <div class="input-group">
+                            <!-- <span class="input-group-addon">https://</span> -->
+                            <input type="text" class="form-control" id="account-id" placeholder="AWS Account Number/Alias" autofocus>
+                            <!-- <span class="input-group-addon">.signin.aws.amazon.com/console</span> -->
+                            <span class="input-group-btn">
+                          <button class="btn btn-success btn-md"
+                                  id="go-btn"
+                                  type="button"
+                                  data-toggle="tooltip"
+                                  data-placement="bottom"
+                                  data-original-title="Push to open in new tab">
+                            <i class="fa fa-external-link fa-lg" aria-hidden="true"></i>
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group" style="margin-left: 83px;">
+                            <input type="text" class="form-control" id="account-label" placeholder="Display Name">
+                            <span class="input-group-btn">
+                          <button class="btn btn-info btn-md" type="button" id="add-btn">
+                            <i class="fa fa-bookmark" aria-hidden="true"></i> Save
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <h4>Cross-Account Access Role</h4> <!-- ROLE SECTION -->
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="account-role-namer" placeholder="Role Name" autofocus>
+                            <span class="input-group-addon"></span>
+                            <input type="text" class="form-control" id="account-idr" placeholder="AWS Account Number/Alias">
+                            <span class="input-group-btn">
+                          <button class="btn btn-success btn-md"
+                                  id="go-btn_role"
+                                  type="button"
+                                  data-toggle="tooltip"
+                                  data-placement="bottom"
+                                  data-original-title="Generate and copy URL to the Clipboard">
+                            <span><i class="fa fa-clipboard fa-lg" aria-hidden="true"></i></span>
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group" style="margin-left: 83px;">
+                            <input type="text" class="form-control" id="account-labelr" placeholder="Display Name">
+                            <span class="input-group-btn">
+                          <button class="btn btn-info btn-md" type="button" id="add-btn_role">
+                            <i class="fa fa-bookmark" aria-hidden="true"></i> Save
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">AWS Accounts</h2>
+                    </div>
+                    <div class="panel-body" id="aws-account-bookmarks">
+                        <div class="list-group" data-bind="foreach: bookmarkList">
+                            <div class="input-group">
+                                <a data-bind="attr:{ href:url }" class="list-group-item active" target="_blank">
+                                    <!-- ko if: account_label -->
+                                    <span data-bind="text: account_label"></span><br>
+                                    <!-- /ko -->
+                                </a>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger btn-sm" type="button" data-bind='click: removeBookmark'><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">CCA Roles</h2>
+                    </div>
+                    <div class="panel-body" id="aws-account-bookmarks">
+                        <div class="list-group" data-bind="foreach: bookmarkList2">
+                            <div class="input-group">
+                                <a data-bind="attr:{ href:url2 }" class="list-group-item active" target="_blank">
+                                    <!-- ko if: account_label -->
+                                    <span data-bind="text: account_label"></span><br>
+                                    <!-- /ko -->
+                                </a>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger btn-sm" type="button" data-bind='click: removeBookmarkRole'><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div
+    <footer>
+    </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="assets/scripts/knockout.js" type="application/javascript"></script>
+        <script src="assets/scripts/script.js" type="application/javascript"></script>
+        <script src="assets/scripts/set-background.js" type="application/javascript"></script>
+        <script src="assets/scripts/clipboard.js" type="application/javascript"></script>
+</body>
+
+</html>
