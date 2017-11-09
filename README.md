@@ -29,3 +29,8 @@ You can try on [console.lukado.eu](https://console.lukado.eu) or grab a copy and
 
 
 Author: Lukasz Dorosz [@mrdoro](https://twitter.com/mrdoro)
+
+
+
+
+*Inspired by [Naveen Vijay](https://github.com/naveen-vijay/awsiamlogin) project*
