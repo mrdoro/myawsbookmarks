@@ -20,7 +20,7 @@ One place to store all bookmarks to AWS Accounts and Cross-Accounts Access Roles
  - No servers required, just install on AWS S3, Github Pages etc.
 
 
-You can try on [console.lukado.eu](console.lukado.eu) or grab a copy and install where ever you want.
+You can try on [console.lukado.eu](https://console.lukado.eu) or grab a copy and install where ever you want.
 
 
 ### Demo
