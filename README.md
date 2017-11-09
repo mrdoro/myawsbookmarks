@@ -25,7 +25,7 @@ You can try on [console.lukado.eu](console.lukado.eu) or grab a copy and install
 
 ### Demo
 
-<iframe width="560" height="315" align="center" src="https://www.youtube.com/embed/21TODybelJA" frameborder="0" gesture="media" allowfullscreen></iframe>
+[![Watch the video](http://img.youtube.com/vi/21TODybelJA/0.jpg)](https://www.youtube.com/embed/21TODybelJA)
 
 
 Author: Lukasz Dorosz [@mrdoro](https://twitter.com/mrdoro)
