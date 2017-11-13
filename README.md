@@ -28,6 +28,15 @@ You can try/use on [console.lukado.eu](https://console.lukado.eu) or grab a copy
 [![Watch the video](http://img.youtube.com/vi/21TODybelJA/0.jpg)](https://www.youtube.com/embed/21TODybelJA)
 
 
+### Instalation on S3:
+
+1. Clone repo: git clone: ```https://github.com/mrdoro/myawsbookmarks.git ```
+2. Create a S3 bucket: ```aws s3 mb s3://bucket_name --region preffered_region```
+3. Configure S3 bucket as static website: ```aws s3 website s3://bucket_name --index-document index.html --error-document error.html```
+4. Sync data to S3 (only necessary): ```aws s3 sync --acl public-read myawsbookmarks/ s3://bucket_name/ --exclude "*" --include "index.html" --include "assets/*"```
+5. Enjoy!
+
+
 Author: Lukasz Dorosz [@mrdoro](https://twitter.com/mrdoro)
 
 
